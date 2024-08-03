@@ -1,10 +1,14 @@
 <div align="center">
-  <img src="https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_white.png?raw=true" alt="nexitor" width="400"/>
+  <img src="https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_white.png?raw=true" alt="nexitor" width="500"/>
 </div>
 
-# Cross-platfrom NextJS Template
+<h1 align="center">
+    Cross-platfrom NextJS Template
+</h1>
 
-Nexitor is a powerful and flexible template project designed to streamline the development of modern web applications using Next.js and Capacitor. With Nexitor, you can quickly set up a new project with TypeScript, ESLint, Tailwind CSS, and more, all while ensuring optimal performance and best practices.
+<p align="center">
+    Nexitor is a powerful and flexible template project designed to streamline the development of modern web applications using Next.js and Capacitor. With Nexitor, you can quickly set up a new project with TypeScript, ESLint, Tailwind CSS, and more, all while ensuring optimal performance and best practices.
+</p>
 
 ## Features
 - Next.js: Build robust, server-rendered React applications with ease.
