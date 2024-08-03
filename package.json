@@ -1,0 +1,29 @@
+{
+  "name": "create-nexitor-app",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "create-nexitor-app": "./index.js"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "ionic",
+    "capacitor",
+    "template"
+  ],
+  "author": "Gene Ni",
+  "license": "MIT",
+  "description": "Nexitor is cross-platform template powered by NextJS 14 and Capacitor 6",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "figlet": "^1.7.0",
+    "prompts": "^2.4.2"
+  }
+}
