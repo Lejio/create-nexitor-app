@@ -10,8 +10,11 @@
 </h1>
 
 <div align="center">
-    <img src="https://img.shields.io/npm/l/create-nexitor-app" alt="license badge" />
-    <img src="https://img.shields.io/npm/v/create-nexitor-app" alt="version badge"/>
+    <img src="https://img.shields.io/npm/l/create-nexitor-app"/>
+    <img src="https://img.shields.io/npm/v/create-nexitor-app"/>
+    <img src="https://img.shields.io/badge/nextjs-v14-%23000000"/>
+    <img src="https://img.shields.io/badge/capacitor-v6-%23129EFF"/>
+
 </div>
 
 <p align="center">
