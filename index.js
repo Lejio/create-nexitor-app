@@ -8,12 +8,17 @@ import fs from 'fs';
 import path from 'path';
 
 const config_questions = [
-    // Add validation for project_name. (space, special characters, etc.)
     {
         type: "text",
         name: "project_name",
         message: "What's your project name?",
         initial: "app",
+        validate: (value) => {
+            const hasSpacesOrSpecialCharacters = value => /[\s\W]/.test(value);
+            if (hasSpacesOrSpecialCharacters(value)) {
+                return "Project name cannot contain spaces or special characters.";
+            }
+        }
     },
     {
         type: "toggle",
