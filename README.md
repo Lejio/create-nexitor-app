@@ -1,9 +1,8 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_dark.png?raw=true" >
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_light.png?raw=true" >
-    <img src="https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_light.png?raw=true" alt="Nexitor" width="200">
-  </picture>
+  <source media="(prefers-color-scheme: dark)" srcset="[https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_white.png]">
+  <img alt="nexitor" src="https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_black.png">
+</picture>
 </div>
 
 <h1 align="center">
