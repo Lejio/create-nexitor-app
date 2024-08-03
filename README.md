@@ -1,5 +1,6 @@
-![nexitor](https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_white.png?raw=true)
----
+<div style="text-align: center;">
+  <img src="https://github.com/Lejio/create-nexitor-app/blob/main/media/nexitor_white.png?raw=true" alt="Nexitor" width="400"/>
+</div>
 
 # Cross-platfrom NextJS Template
 
