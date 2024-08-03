@@ -6,6 +6,11 @@
     Cross-platfrom NextJS Template
 </h1>
 
+<div align="center">
+    <img src="https://img.shields.io/npm/l/create-nexitor-app" alt="license badge" />
+    <img src="https://img.shields.io/npm/v/create-nexitor-app" alt="version badge"/>
+</div>
+
 <p align="center">
     Nexitor is a powerful and flexible template project designed to streamline the development of modern web applications using Next.js and Capacitor. With Nexitor, you can quickly set up a new project with TypeScript, ESLint, Tailwind CSS, and more, all while ensuring optimal performance and best practices.
 </p>
