@@ -7,17 +7,28 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
+const onState = (state) => {
+    if (state.aborted) {
+      process.nextTick(() => {
+        console.log(chalk.red('Nexitor aborted!'));
+        process.exit(0);
+      })
+    }
+  }
+
 const config_questions = [
     {
         type: "text",
         name: "project_name",
         message: "What's your project name?",
         initial: "app",
+        onState: onState,
         validate: (value) => {
-            const hasSpacesOrSpecialCharacters = value => /[\s\W]/.test(value);
+            const hasSpacesOrSpecialCharacters = value => /[^a-zA-Z0-9]/.test(value);
             if (hasSpacesOrSpecialCharacters(value)) {
                 return "Project name cannot contain spaces or special characters.";
             }
+            return true;
         }
     },
     {
@@ -25,6 +36,7 @@ const config_questions = [
         name: "next_config",
         message: "Would you like to configure Next.js?",
         active: "Yes",
+        onState: onState,
         inactive: "No",
         format: value => value == true ? true : null,
         initial: false,
@@ -34,6 +46,7 @@ const config_questions = [
         name: "typescript",
         message: `Would you like to use ${chalk.blue.bold('TypeScript')}?`,
         initial: true,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     },
@@ -42,6 +55,7 @@ const config_questions = [
         name: "eslint",
         message: "Would you like to use ESLint?",
         initial: true,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     },
@@ -50,6 +64,7 @@ const config_questions = [
         name: "tailwind",
         message: "Would you like to use Tailwind CSS?",
         initial: true,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     },
@@ -58,6 +73,7 @@ const config_questions = [
         name: "src_directory",
         message: "Would you like to use `src/` directory?",
         initial: true,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     },
@@ -66,6 +82,7 @@ const config_questions = [
         name: "app_router",
         message: "Would you like to use App Router? (recommended)",
         initial: true,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     },
@@ -74,6 +91,7 @@ const config_questions = [
         name: "custom_alias",
         message: "Would you like to customize the default import alias (@/*)?",
         initial: false,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     },
@@ -81,6 +99,7 @@ const config_questions = [
     {
         type: prev => prev == true ? "text" : null,
         name: "alias",
+        onState: onState,
         message: "What import alias would you like configured?",
         initial: "@/*",
     },
@@ -90,6 +109,7 @@ const config_questions = [
         message: "Would you like to configure Capacitor?",
         format: value => value == true ? true : null,
         initial: false,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     },
@@ -98,6 +118,7 @@ const config_questions = [
         name: "capacitor_ios",
         message: "Would you like to configure Capacitor for iOS?",
         initial: true,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     },
@@ -106,6 +127,7 @@ const config_questions = [
         name: "capacitor_android",
         message: "Would you like to configure Capacitor for Android?",
         initial: true,
+        onState: onState,
         active: "Yes",
         inactive: "No",
     }
@@ -157,6 +179,7 @@ const addOutputToNextConfig = () => {
     )
     const response = await prompts(config_questions);
     console.log(response);
+    
 
     const { project_name, next_config, typescript, eslint, tailwind, src_directory, app_router, custom_alias, capacitor_config, capacitor_ios, capacitor_android } = response;
 
