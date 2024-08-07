@@ -165,6 +165,7 @@ const runCommand = (command) => {
                 console.log(chalk.red(`Error: ${stderr}`));
                 reject(error);
             } else {
+                console.log(stdout)
                 resolve(stdout);
             }
         });
@@ -200,12 +201,12 @@ const runCommand = (command) => {
     // Create Next.js project
     const nextCommand = `npx create-next-app ${project_name} ${next_config ? typescript ? '--typescript' : '--no-typescript'  : '--typescript'} ${ next_config ? eslint ? '--eslint' : '--no-eslint' : '--eslint'} ${next_config ? tailwind ? '--tailwind' : '--no-tailwind' : '--tailwind'} ${next_config ? src_directory ? '--src-dir' : '--no-src-dir' : '--src-dir'} ${ next_config ? app_router ? '--no-app' : '--app' : '--app'} ${ next_config ? custom_alias ? '--no-import-alias' : '--import-alias @/*' : '--import-alias @/*'}`;
 
-    console.log(nextCommand)
-    console.log(chalk.green(`Generating a new Next.js project.`));
+    // console.log(nextCommand)
+    console.log(`Generating a new nexitor project.`);
     // exec(nextCommand, { stdio: 'inherit' });
     try {
         await runCommand(nextCommand);
-        console.log(chalk.green(`Project ${project_name} created successfully.`));
+        console.log(`Nextjs ${project_name} created successfully.`);
     } catch (error) {
         console.log(chalk.red(`Failed to create project ${project_name}.`));
         process.exit(1);
@@ -213,22 +214,22 @@ const runCommand = (command) => {
 
     process.chdir(project_name);
     addOutputToNextConfig();
-    console.log(chalk.green('Creating static build...'));
+    console.log('Creating static build...');
     await runCommand(nextCommand);
-    console.log(chalk.green('Installing Capacitor...'));
+    console.log('Installing Capacitor...');
     runCommand('npm install @capacitor/core @capacitor/cli', { stdio: 'inherit' });
 
-    console.log(chalk.green('Initializing Capacitor...'));
+    console.log('Initializing Capacitor...');
     await runCommand(`npx cap init ${project_name} com.${project_name.toLowerCase()}.app --web-dir out`, { stdio: 'inherit' });
 
     if ((capacitor_ios && capacitor_config) || !capacitor_config) {
-        console.log(chalk.green('Adding iOS platform...'));
+        console.log('Adding iOS platform...');
         await runCommand('npm i @capacitor/ios', { stdio: 'inherit' });
         await runCommand('npx cap add ios', { stdio: 'inherit' });
     }
 
     if ((capacitor_android && capacitor_config) || !capacitor_config) {
-        console.log(chalk.green('Adding Android platform...'));
+        console.log('Adding Android platform...');
         await runCommand('npm i @capacitor/android', { stdio: 'inherit' });
         await runCommand('npx cap add android', { stdio: 'inherit' });
     }
