@@ -3,6 +3,7 @@
 import prompts from "prompts";
 import chalk from "chalk";
 import figlet from "figlet";
+import cliSpinners from "cli-spinners";
 import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
