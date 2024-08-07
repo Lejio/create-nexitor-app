@@ -3,7 +3,7 @@
 import prompts from "prompts";
 import chalk from "chalk";
 import figlet from "figlet";
-import { execSync } from 'child_process';
+import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
@@ -158,6 +158,19 @@ const addOutputToNextConfig = () => {
     }
 };
 
+const runCommand = (command) => {
+    return new Promise((resolve, reject) => {
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                console.log(chalk.red(`Error: ${stderr}`));
+                reject(error);
+            } else {
+                resolve(stdout);
+            }
+        });
+    });
+};
+
 (async () => {
     await figlet.text(
         "nexitor",
@@ -189,29 +202,37 @@ const addOutputToNextConfig = () => {
 
     console.log(nextCommand)
     console.log(chalk.green(`Generating a new Next.js project.`));
-    execSync(nextCommand, { stdio: 'inherit' });
+    // exec(nextCommand, { stdio: 'inherit' });
+    try {
+        await runCommand(nextCommand);
+        console.log(chalk.green(`Project ${project_name} created successfully.`));
+    } catch (error) {
+        console.log(chalk.red(`Failed to create project ${project_name}.`));
+        process.exit(1);
+    }
 
     process.chdir(project_name);
     addOutputToNextConfig();
     console.log(chalk.green('Creating static build...'));
-    execSync('npm run build', { stdio: 'inherit' });
+    await runCommand(nextCommand);
     console.log(chalk.green('Installing Capacitor...'));
-    execSync('npm install @capacitor/core @capacitor/cli', { stdio: 'inherit' });
+    runCommand('npm install @capacitor/core @capacitor/cli', { stdio: 'inherit' });
 
     console.log(chalk.green('Initializing Capacitor...'));
-    execSync(`npx cap init ${project_name} com.${project_name.toLowerCase()}.app --web-dir out`, { stdio: 'inherit' });
+    await runCommand(`npx cap init ${project_name} com.${project_name.toLowerCase()}.app --web-dir out`, { stdio: 'inherit' });
 
     if ((capacitor_ios && capacitor_config) || !capacitor_config) {
         console.log(chalk.green('Adding iOS platform...'));
-        execSync('npm i @capacitor/ios', { stdio: 'inherit' });
-        execSync('npx cap add ios', { stdio: 'inherit' });
+        await runCommand('npm i @capacitor/ios', { stdio: 'inherit' });
+        await runCommand('npx cap add ios', { stdio: 'inherit' });
     }
 
     if ((capacitor_android && capacitor_config) || !capacitor_config) {
         console.log(chalk.green('Adding Android platform...'));
-        execSync('npm i @capacitor/android', { stdio: 'inherit' });
-        execSync('npx cap add android', { stdio: 'inherit' });
+        await runCommand('npm i @capacitor/android', { stdio: 'inherit' });
+        await runCommand('npx cap add android', { stdio: 'inherit' });
     }
 
     console.log(chalk.green('Project setup complete!'));
+    process.exit(0);
 })();

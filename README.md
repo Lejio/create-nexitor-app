@@ -18,7 +18,7 @@
 </div>
 
 <p align="center">
-    Nexitor is a powerful and flexible template project designed to streamline the development of modern web applications using Next.js and Capacitor. With Nexitor, you can quickly set up a new project with TypeScript, ESLint, Tailwind CSS, and more, all while ensuring optimal performance and best practices.
+    Nexitor is a powerful and flexible project template designed to streamline the development of modern web applications using Next.js and Capacitor. With Nexitor, you can quickly set up a new project with TypeScript, ESLint, Tailwind CSS, and more, all while ensuring optimal performance and best practices.
 </p>
 
 ## 🚀 Features 
