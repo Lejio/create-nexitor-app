@@ -9,6 +9,10 @@
   "bin": {
     "create-nexitor-app": "./index.js"
   },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/Lejio/create-nexitor-app"
+  },
   "keywords": [
     "nextjs",
     "react",
