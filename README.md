@@ -35,3 +35,10 @@ To create a new Nexitor project, simply run the following command and follow the
 ```bash
 npx create-nexitor-app@latest
 ```
+
+## 🟢 Upcoming Features
+- Better command line 🚧
+- Nexitor config file 🚧
+- Custom default website 🚧
+- Automatic popular UI library setup (NextUI, MUI, ShadCN, etc) 🚧
+- Nexitor cli for automatic api integration (sets up Shopify, Stripe, MongoDB, etc automatically) 🚧
